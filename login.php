@@ -62,6 +62,25 @@
 		}
 	}
 	
+	if ( isset($_POST["signupEmail"]) &&
+		 isset($_POST["signupPassword"]) &&
+		 $signupEmailError == "" && 
+		 empty($signupPasswordError)
+	   ) {
+		
+		// ühtegi viga ei ole, kõik vajalik olemas
+		echo "salvestan...<br>";
+		echo "email ".$signupEmail."<br>";
+		echo "parool ".$_POST["signupPassword"]."<br>";
+		
+		$password = hash("sha512", $_POST["signupPassword"]);
+		
+
+		echo "räsi ".$password."<br>";
+		
+		
+	}
+	
 	
 ?>
 <!DOCTYPE html>
@@ -94,7 +113,7 @@
 		<form method="POST">
 			
 			<label>E-post</label><br>
-			<input name="signupEmail" type="email" value="<?php echo $signupEmail; ?>" > <?php echo $signupEmailError; ?>
+			<input name="signupEmail" type="email" value="<?=$signupEmail;?>" > <?php echo $signupEmailError; ?>
 			
 			<br><br>
 			
