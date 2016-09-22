@@ -3,8 +3,9 @@
 	//var_dump($_GET);
 	//echo "<br>";
 	//var_dump($_POST);
-	
+		
 	$signupEmailError = "";
+	$signupEmail = "";
 	
 	//kas on üldse olemas
 	if (isset ($_POST["signupEmail"])) {
@@ -16,6 +17,10 @@
 			//oli tõesti tühi
 			$signupEmailError = "See väli on kohustuslik";
 			
+		} else {
+				
+			// kõik korras, email ei ole tühi ja on olemas
+			$signupEmail = $_POST["signupEmail"];
 		}
 		
 	}
@@ -78,7 +83,7 @@
 		<form method="POST">
 			
 			<label>E-post</label><br>
-			<input name="signupEmail" type="email"> <?php echo $signupEmailError; ?>
+			<input name="signupEmail" type="email" value="<?php echo $signupEmail; ?>" > <?php echo $signupEmailError; ?>
 			
 			<br><br>
 			
